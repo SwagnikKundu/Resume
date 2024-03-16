@@ -344,8 +344,21 @@
             alert("Please fill in all fields.");
             return;
         }
-	document.getElementById("contact-form").reset();
-	alert("Message sent successfully!");
+	 var xhr = new XMLHttpRequest();
+	    xhr.open("POST", "send_email.php", true); // Replace "send_email.php" with your server-side script
+	    xhr.setRequestHeader("Content-Type", "application/json");
+	    xhr.onreadystatechange = function() {
+	        if (xhr.readyState === XMLHttpRequest.DONE) {
+	            if (xhr.status === 200) {
+	                alert("Message sent successfully!");
+	                // Optionally, reset form fields
+	                document.getElementById("contact-form").reset();
+	            } else {
+	                alert("Failed to send message. Please try again later.");
+	            }
+	        }
+	    };
+	    xhr.send(JSON.stringify(formData));
 	});
 </script>
 </body>
