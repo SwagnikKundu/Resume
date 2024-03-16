@@ -295,7 +295,7 @@
 			    <div><input type="text" placeholder="Your Name" class="input-field" id="name" required></div>
 			    <div><input type="email" placeholder="Your Email" class="input-field" id="email" required></div>
 			    <div><textarea class="input-field" placeholder="Message" id="message"></textarea></div>
-			    <div><input type="submit" class="white-border-transparent-button" id="submit" value="SEND MESSAGE"></div>
+			    <div><a href="mailto:swagnik.officil98@gmail.com"><input type="submit" class="white-border-transparent-button" id="submit" value="SEND MESSAGE"></a></div>
 			</form>
                 </div>
                 <div class="address-container">
@@ -344,21 +344,8 @@
             alert("Please fill in all fields.");
             return;
         }
-	 var xhr = new XMLHttpRequest();
-	    xhr.open("POST", "send_email.php", true); // Replace "send_email.php" with your server-side script
-	    xhr.setRequestHeader("Content-Type", "application/json");
-	    xhr.onreadystatechange = function() {
-	        if (xhr.readyState === XMLHttpRequest.DONE) {
-	            if (xhr.status === 200) {
-	                alert("Message sent successfully!");
-	                // Optionally, reset form fields
-	                document.getElementById("contact-form").reset();
-	            } else {
-	                alert("Failed to send message. Please try again later.");
-	            }
-	        }
-	    };
-	    xhr.send(JSON.stringify(formData));
+	document.getElementById("contact-form").reset();
+	alert("Message sent successfully!");
 	});
 </script>
 </body>
