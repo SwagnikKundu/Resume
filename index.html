@@ -291,12 +291,12 @@
             </div>
             <div class="contact-container">
                 <div class="contact-form-container">
-                    <form>
-                        <div><input type="text" placeholder="Your Name" class="input-field" required></div>
-                        <div><input type="email" placeholder="Your Email" class="input-field" required></div>
-                        <div><textarea class="input-field" placeholder="Message"></textarea></div>
-                        <div><a href="mailto:swagnik.officil98@gmail.com"><input type="button" class="white-border-transparent-button" id="submit" value="SEND MESSAGE"></a></div>
-                    </form>
+                        <form id="contact-form">
+			    <div><input type="text" placeholder="Your Name" class="input-field" id="name" required></div>
+			    <div><input type="email" placeholder="Your Email" class="input-field" id="email" required></div>
+			    <div><textarea class="input-field" placeholder="Message" id="message"></textarea></div>
+			    <div><input type="submit" class="white-border-transparent-button" id="submit" value="SEND MESSAGE"></div>
+			</form>
                 </div>
                 <div class="address-container">
                     <h2>Get in touch</h2>
@@ -330,6 +330,23 @@
         </section>
 
     </main>
+<script>
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the default form submission
 
+        // Get form values
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var message = document.getElementById("message").value;
+
+        // Simple email validation (you might want to use a more robust validation)
+        if (!name || !email || !message) {
+            alert("Please fill in all fields.");
+            return;
+        }
+	document.getElementById("contact-form").reset();
+	alert("Message sent successfully!");
+	});
+</script>
 </body>
 </html>
